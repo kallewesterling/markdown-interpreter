@@ -22,12 +22,12 @@ def get_raw_content(repo="https://github.com/kallewesterling/dhri-test-repo", br
     user = repo.split("/")[3]
     repo_name = repo.split("/")[4]
 
-    raw_url = "https://raw.githubusercontent.com/" + user + "/" + repo_name + "/" + branch
+    raw_url = f"https://raw.githubusercontent.com/{user}/{repo_name}/{branch}"
 
     raw_meta = {}
-    raw_meta['frontmatter'] = raw_url + "/frontmatter.md"
-    raw_meta['theory-to-practice'] = raw_url + "/theory-to-practice.md"
-    raw_meta['assessment'] = raw_url + "/assessment.md"
+    raw_meta['frontmatter'] = "{raw_url}/frontmatter.md"
+    raw_meta['theory-to-practice'] = "{raw_url}/theory-to-practice.md"
+    raw_meta['assessment'] = "{raw_url}/assessment.md"
 
     raw_content = {}
     raw_content['frontmatter'] = requests.get(raw_meta['frontmatter']).text
