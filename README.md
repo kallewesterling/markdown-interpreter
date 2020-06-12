@@ -8,6 +8,10 @@ Import whatever parts of the package you need in your Python script:
 from MarkdownInterpreter import split_md_into_sections, get_raw_content
 ```
 
+## How to run this script
+
+_If you are interested in just testing it out, there is a [test.py](test.py) file available to run immediately after you clone this repo._
+
 `split_md_into_sections` is the most useful function here but depends on markdown data that we will download directly from a GitHub source, using `get_raw_content`.
 
 To get the data, we will run:
