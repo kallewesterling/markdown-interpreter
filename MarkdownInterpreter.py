@@ -5,16 +5,14 @@ BULLETPOINTS_TO_LISTS = True    # remakes sections that ONLY contain bulletpoint
 
 
 def get_raw_content(repo="https://github.com/kallewesterling/dhri-test-repo", branch="master"):
-    '''
-
+    """
     Downloads all the raw content from a provided repository on GitHub, and from a particular master.
 
     The repository must be *public* and must contain the following three files:
     - frontmatter.md
     - theory-to-practice.md
     - assessment.md
-
-    '''
+    """
 
     if repo.endswith("/"): repo = repo[:-1]
 
@@ -45,28 +43,24 @@ def get_raw_content(repo="https://github.com/kallewesterling/dhri-test-repo", br
 
 
 def section_is_bulletpoints(markdown):
-    '''
-    Returns `True` if a section of markdown only contains bullet points. Otherwise returns `False`
-    '''
+    """ Returns `True` if a section of markdown only contains bullet points. Otherwise returns `False` """
     if not "\n- " in markdown and not markdown.startswith("- "): return False # make sure there ARE lists in there at all
     return len([x for x in markdown.splitlines() if x.startswith("- ")]) == len(markdown.splitlines())
 
 
 def section_as_list(markdown, shave_off=2):
-    '''
-    Returns each line from a markdown section as a list element, with the first `shave_off` letters removed from each element.
-    '''
+    """ Returns each line from a markdown section as a list element, with the first `shave_off` letters removed from each element. """
     return [x[shave_off:] for x in markdown.splitlines()]
 
 
 def split_md_into_sections(markdown, remove_empty_headings=REMOVE_EMPTY_HEADINGS, bulletpoints_to_lists=BULLETPOINTS_TO_LISTS):
-    '''
+    """
     Splits a markdown file into a dictionary with the headings as keys and the section contents as values, and returns the dictionary.
 
     The function accepts two arguments:
     - `remove_empty_headings` (bool) which determines whether empty dictionary keys (headings) should be removed from the dictionary (defaults to REMOVE_EMPTY_HEADINGS, defined on line 3)
     - `bulletpoints_to_lists` (bool) which determines whether sections that contain ONLY bulletpoints should be converted into python lists with each bullet point as an element in the list (defaults to BULLETPOINTS_TO_LISTS, defined on line 4)
-    '''
+    """
 
     if not isinstance(remove_empty_headings, bool): raise RuntimeError("`remove_empty_headings` provided must be a boolean.")
     if not isinstance(bulletpoints_to_lists, bool): raise RuntimeError("`bulletpoints_to_lists` provided must be a boolean.")
