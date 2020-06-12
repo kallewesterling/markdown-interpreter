@@ -14,8 +14,8 @@ To get the data, we will run:
 
 ```python
 data = get_raw_content(
-  repo="https://github.com/kallewesterling/dhri-test-repo",
-  branch="master"
+  repo = "https://github.com/kallewesterling/dhri-test-repo",
+  branch = "master"
 )
 ```
 
