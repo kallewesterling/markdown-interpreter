@@ -9,3 +9,19 @@ sections['theory-to-practice'] = split_md_into_sections(data['content']['theory-
 sections['assessment'] = split_md_into_sections(data['content']['assessment'])
 
 pprint(sections)
+
+
+# Manually added meta-data here:
+
+sections['frontmatter']['Name'] = 'Test Repository'
+sections['frontmatter']['Parent backend'] = "Github"
+sections['frontmatter']['Parent repo'] = "kallewesterling/dhri-test-repo"
+sections['frontmatter']['Parent branch'] = "v2.0"
+
+
+# Added part about saving:
+
+from pathlib import Path
+import json
+
+Path("./workshop.json").write_text(json.dumps(sections))
